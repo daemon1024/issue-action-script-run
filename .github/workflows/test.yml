@@ -11,7 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Dump github context
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - run: echo Hello
+
+      - name: "Run node.js script"
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: node script.js
